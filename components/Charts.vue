@@ -46,19 +46,19 @@
                 const priceLow =  this.priceLow
                 const coinArray = data.slice(0,10);
                 for (let index=0; index < coinArray.length; index++){
-                    cryptoCoins.push(coinArray[index].name);
-                    cryptoCoinsID.push(coinArray[index].id);
-                    //console.log(cryptoCoins);
-                    fetch('https://api.coinpaprika.com/v1/coins/' + cryptoCoinsID[index] + '/ohlcv/latest')
+                    fetch('https://api.coinpaprika.com/v1/coins/' + coinArray[index].id + '/ohlcv/latest')
                     .then((response) => response.json())
                     .then((data) => {
                         priceHigh.push(data[0].high)
                         priceLow.push(data[0].low)
                     })
-                    //console.log(priceHigh)
+                    cryptoCoins.push(coinArray[index].name);
+                    cryptoCoinsID.push(coinArray[index].id);
                 }
-            
-                
+
+                    console.log(priceHigh)
+                    console.log(priceLow)
+                    console.log(cryptoCoinsID);
                 //cryptoCoins.for(coins in cryptoCoins)
                 // this.cryptoCoins.push(topTenCoins);
                 //;
